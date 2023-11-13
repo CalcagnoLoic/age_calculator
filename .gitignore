@@ -18,3 +18,5 @@
 design/
 style-*
 *-template*
+
+node_modules/
