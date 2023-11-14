@@ -47,6 +47,7 @@
                                 type="text"
                                 class="w-16 md:w-24 border-light_grey border-2 rounded px-1 py-2 font-bold text-xl"
                                 placeholder="DD"
+                                id="day"
                             />
                         </div>
                         <div class="flex flex-col gap-2">
@@ -59,6 +60,7 @@
                                 type="text"
                                 class="w-16 md:w-24 border-light_grey border-2 rounded px-1 py-2 font-bold text-xl"
                                 placeholder="MM"
+                                id="month"
                             />
                         </div>
                         <div class="flex flex-col gap-2">
@@ -71,11 +73,12 @@
                                 type="text"
                                 class="w-16 md:w-24 border-light_grey border-2 rounded px-1 py-2 font-bold text-xl"
                                 placeholder="YYYY"
+                                id="year"
                             />
                         </div>
                     </div>
 
-                    <button>
+                    <button id="btn">
                         <img
                             src="assets/images/icon-arrow.svg"
                             alt=""
@@ -87,24 +90,27 @@
                 <!--Container with results-->
                 <div class="mt-12">
                     <p class="font-extrabold text-5xl italic">
-                        <span class="text-purple font-extrabold text-5xl"
+                        <span class="text-purple font-extrabold text-5xl" id="year_result"
                             >--</span
                         >
                         years
                     </p>
                     <p class="font-extrabold text-5xl italic">
-                        <span class="text-purple font-extrabold text-5xl"
+                        <span class="text-purple font-extrabold text-5xl" id="month_result"
                             >--</span
                         >
                         months
                     </p>
                     <p class="font-extrabold text-5xl italic">
-                        <span class="text-purple font-extrabold text-5xl"
+                        <span class="text-purple font-extrabold text-5xl" id="day_result"
                             >--</span
                         >
                         days
                     </p>
                 </div>
+                <button type="button" onclick="refresh()" class="bg-purple p-4 rounded-3xl block mx-auto mt-5 w-1/2">
+                    <img src="assets/images/refresh.svg" alt="refresh" class="w-1/6 block mx-auto revert">
+                </button>
             </div>
         </main>
 
@@ -122,6 +128,6 @@
                 >.
             </p>
         </footer>
+        <script src="assets/js/main.js"></script>
     </body>
-    <script src="assets/js/script.js"></script>
 </html>

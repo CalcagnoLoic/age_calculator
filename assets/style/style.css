@@ -12,3 +12,5 @@
         font-family: "Poppins";
     }
 }
+
+/*npx tailwindcss -i assets/style/style.css -o assets/style/output.css --watch*/
