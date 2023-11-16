@@ -45,10 +45,11 @@
                             >
                             <input
                                 type="text"
-                                class="w-16 md:w-24 border-light_grey border-2 rounded px-1 py-2 font-bold text-xl"
+                                class="w-16 md:w-24 border-2 rounded px-1 py-2 font-bold text-xl"
                                 placeholder="DD"
                                 id="day"
                             />
+                            <p class="text-ligth_red text-[9px] italic"></p>
                         </div>
                         <div class="flex flex-col gap-2">
                             <label
@@ -62,6 +63,7 @@
                                 placeholder="MM"
                                 id="month"
                             />
+                            <p class="text-ligth_red text-[9px] italic"></p>
                         </div>
                         <div class="flex flex-col gap-2">
                             <label
@@ -75,6 +77,7 @@
                                 placeholder="YYYY"
                                 id="year"
                             />
+                            <p class="text-ligth_red text-[9px] italic"></p>
                         </div>
                     </div>
 
@@ -90,26 +93,41 @@
                 <!--Container with results-->
                 <div class="mt-12">
                     <p class="font-extrabold text-5xl italic">
-                        <span class="text-purple font-extrabold text-5xl" id="year_result"
+                        <span
+                            class="text-purple font-extrabold text-5xl"
+                            id="year_result"
                             >--</span
                         >
                         years
                     </p>
                     <p class="font-extrabold text-5xl italic">
-                        <span class="text-purple font-extrabold text-5xl" id="month_result"
+                        <span
+                            class="text-purple font-extrabold text-5xl"
+                            id="month_result"
                             >--</span
                         >
                         months
                     </p>
                     <p class="font-extrabold text-5xl italic">
-                        <span class="text-purple font-extrabold text-5xl" id="day_result"
+                        <span
+                            class="text-purple font-extrabold text-5xl"
+                            id="day_result"
                             >--</span
                         >
                         days
                     </p>
                 </div>
-                <button type="button" onclick="refresh()" class="bg-purple p-4 rounded-3xl block mx-auto mt-5 w-1/2">
-                    <img src="assets/images/refresh.svg" alt="refresh" class="w-1/6 block mx-auto revert">
+                <button
+                    type="button"
+                    onclick="refresh()"
+                    class="bg-purple p-4 rounded-3xl block mx-auto mt-5 w-1/2"
+                    id="btn_refresh"
+                >
+                    <img
+                        src="assets/images/refresh.svg"
+                        alt="refresh"
+                        class="w-1/6 block mx-auto revert"
+                    />
                 </button>
             </div>
         </main>
