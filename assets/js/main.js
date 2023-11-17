@@ -18,11 +18,8 @@ const button_refresh = document.getElementById("btn_refresh");
 /************************************************* */
 button.addEventListener("click", (e) => {
     e.preventDefault();
-
     if (validateDayField() && validateMonthField() && validateYearField()) {
         calculationAge();
-    } else {
-        return;
     }
 });
 
@@ -57,26 +54,23 @@ const isValidDay = (d) => {
     d > 31 || d < 1 ? false : true;
 };
 /**
- *
- * @returns
+ * Check the validity of the day's field
+ * @returns {boolean} 
  */
 const validateDayField = () => {
-    if (day.trim() === "") {
+    if (day.trim() == "") {
         showingErrorMessage(
             document.getElementById("day"),
-            "The field is required",
-            "border-ligth_red"
+            "The field is required"
         );
         return false;
-    } else if (isValidDay(day.trim())) {
+    } else if (isValidDay(day.trim()) == false) {
         showingErrorMessage(
             document.getElementById("day"),
-            "Must be a valid day",
-            "border-ligth_red"
+            "Must be a valid day"
         );
         return false;
     } else {
-        showingErrorMessage(document.getElementById("day"), "", "");
         return true;
     }
 };
@@ -89,23 +83,24 @@ const validateDayField = () => {
 const isValidMonth = (m) => {
     m > 12 || m < 1 ? false : true;
 };
+/**
+ * Check the validity of the month's field
+ * @returns {boolean}  
+ */
 const validateMonthField = () => {
-    if (month.trim() === "") {
+    if (month.trim() == "") {
         showingErrorMessage(
             document.getElementById("month"),
-            "The field is required",
-            "border-ligth_red"
+            "The field is required"
         );
         return false;
     } else if (isValidMonth(month.trim())) {
         showingErrorMessage(
             document.getElementById("month"),
-            "Must be a valid month",
-            "border-ligth_red"
+            "Must be a valid month"
         );
         return false;
     } else {
-        showingErrorMessage(document.getElementById("month"), "", "");
         return true;
     }
 };
@@ -118,19 +113,18 @@ const validateMonthField = () => {
 const isValidYear = (birthday_date) => {
     new Date(birthday_date).setHours(0, 0, 0, 0) >
     new Date().setHours(0, 0, 0, 0)
-        ? false
-        : true;
+        ? true
+        : false;
 };
 /**
- *
- * @returns
+ * Check the validity of the year's field
+ * @returns {boolean} 
  */
 const validateYearField = () => {
-    if (year.trim() === "") {
+    if (year.trim() == "") {
         showingErrorMessage(
             document.getElementById("year"),
-            "The field is required",
-            "border-ligth_red"
+            "The field is required"
         );
         return false;
     } else if (
@@ -139,12 +133,10 @@ const validateYearField = () => {
     ) {
         showingErrorMessage(
             document.getElementById("year"),
-            "Must be a valid year",
-            "border-ligth_red"
+            "Must be a valid year"
         );
         return false;
     } else {
-        showingErrorMessage(document.getElementById("month"), "", "");
         return true;
     }
 };
@@ -160,10 +152,9 @@ const refresh = () => {
  * Allows to display an error message with style according the status of fields
  * @param {Node} elem - The node where change is needed
  * @param {String} text - The text that appears below the field if there is any error
- * @param {String} style - The style for the fields if there is any error
  */
-const showingErrorMessage = (elem, text, style) => {
-    elem.previousElementSibling.style.color = "text-light_red";
+const showingErrorMessage = (elem, text) => {
+    elem.previousElementSibling.style.color = "hsl(0, 100%, 67%)";
     elem.nextElementSibling.innerText = text;
-    elem.style.border = style;
+    elem.style.border = "2px solid hsl(0, 100%, 67%)";
 };
