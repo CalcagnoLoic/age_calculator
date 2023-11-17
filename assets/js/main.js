@@ -126,7 +126,7 @@ const isValidYear = (birthday_date) => {
  * @returns
  */
 const validateYearField = () => {
-    if (year.trim() == "") {
+    if (year.trim() === "") {
         showingErrorMessage(
             document.getElementById("year"),
             "The field is required",
