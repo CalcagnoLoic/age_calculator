@@ -19,7 +19,7 @@ const button_refresh = document.getElementById("btn_refresh");
 button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    if (validateDayField()) {
+    if (validateDayField() && validateMonthField() && validateYearField()) {
         calculationAge();
     } else {
         return;
@@ -61,14 +61,14 @@ const isValidDay = (d) => {
  * @returns
  */
 const validateDayField = () => {
-    if (day === "") {
+    if (day.trim() === "") {
         showingErrorMessage(
             document.getElementById("day"),
             "The field is required",
             "border-ligth_red"
         );
         return false;
-    } else if (!isValidDay(day)) {
+    } else if (isValidDay(day.trim())) {
         showingErrorMessage(
             document.getElementById("day"),
             "Must be a valid day",
@@ -86,17 +86,67 @@ const validateDayField = () => {
  * @param {number} m - Value coming from month's field
  * @return {boolean} Boolean according the field's value
  */
-const validMonth = (m) => {
+const isValidMonth = (m) => {
     m > 12 || m < 1 ? false : true;
+};
+const validateMonthField = () => {
+    if (month.trim() === "") {
+        showingErrorMessage(
+            document.getElementById("month"),
+            "The field is required",
+            "border-ligth_red"
+        );
+        return false;
+    } else if (isValidMonth(month.trim())) {
+        showingErrorMessage(
+            document.getElementById("month"),
+            "Must be a valid month",
+            "border-ligth_red"
+        );
+        return false;
+    } else {
+        showingErrorMessage(document.getElementById("month"), "", "");
+        return true;
+    }
 };
 
 /**
  * Check if the number between 1 and 12 and not in the future
- * @param {number} y - Value coming from year's field
+ * @param {number} birthday_date - Value coming from field
  * @return {boolean} Boolean according the field's value
  */
-const validYear = (y) => {
-    return;
+const isValidYear = (birthday_date) => {
+    new Date(birthday_date).setHours(0, 0, 0, 0) >
+    new Date().setHours(0, 0, 0, 0)
+        ? false
+        : true;
+};
+/**
+ *
+ * @returns
+ */
+const validateYearField = () => {
+    if (year.trim() == "") {
+        showingErrorMessage(
+            document.getElementById("year"),
+            "The field is required",
+            "border-ligth_red"
+        );
+        return false;
+    } else if (
+        (year.trim() < new Date().getFullYear || year.trim() > 1900) &&
+        isValidYear(year.trim())
+    ) {
+        showingErrorMessage(
+            document.getElementById("year"),
+            "Must be a valid year",
+            "border-ligth_red"
+        );
+        return false;
+    } else {
+        showingErrorMessage(document.getElementById("month"), "", "");
+        return true;
+    }
 };
 
 /**
