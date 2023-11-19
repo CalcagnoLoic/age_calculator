@@ -51,11 +51,11 @@ const calculationAge = () => {
  * @return {boolean} Boolean according the field's value
  */
 const isValidDay = (d) => {
-    d > 31 || d < 1 ? false : true;
+    return d > 31 || d < 1 ? false : true;
 };
 /**
  * Check the validity of the day's field
- * @returns {boolean} 
+ * @returns {boolean}
  */
 const validateDayField = () => {
     if (day.trim() == "") {
@@ -81,11 +81,11 @@ const validateDayField = () => {
  * @return {boolean} Boolean according the field's value
  */
 const isValidMonth = (m) => {
-    m > 12 || m < 1 ? false : true;
+    return m > 12 || m < 1 ? false : true;
 };
 /**
  * Check the validity of the month's field
- * @returns {boolean}  
+ * @returns {boolean}
  */
 const validateMonthField = () => {
     if (month.trim() == "") {
@@ -94,7 +94,7 @@ const validateMonthField = () => {
             "The field is required"
         );
         return false;
-    } else if (isValidMonth(month.trim())) {
+    } else if (isValidMonth(month.trim()) == false) {
         showingErrorMessage(
             document.getElementById("month"),
             "Must be a valid month"
@@ -106,19 +106,16 @@ const validateMonthField = () => {
 };
 
 /**
- * Check if the number between 1 and 12 and not in the future
+ * Check if the number is not in the future
  * @param {number} birthday_date - Value coming from field
  * @return {boolean} Boolean according the field's value
  */
-const isValidYear = (birthday_date) => {
-    new Date(birthday_date).setHours(0, 0, 0, 0) >
-    new Date().setHours(0, 0, 0, 0)
-        ? true
-        : false;
+const isValidYear = (y) => {
+    return new Date(y).getTime() < new Date().getTime() ? false : true;
 };
 /**
  * Check the validity of the year's field
- * @returns {boolean} 
+ * @returns {boolean}
  */
 const validateYearField = () => {
     if (year.trim() == "") {
