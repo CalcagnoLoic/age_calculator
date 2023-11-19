@@ -107,11 +107,11 @@ const validateMonthField = () => {
 
 /**
  * Check if the number is not in the future
- * @param {number} birthday_date - Value coming from field
+ * @param {number} y - Value coming from field
  * @return {boolean} Boolean according the field's value
  */
 const isValidYear = (y) => {
-    return new Date(y).getTime() < new Date().getTime() ? false : true;
+    return new Date(y).getTime() > new Date().getTime() ? true : false;
 };
 /**
  * Check the validity of the year's field
