@@ -1,30 +1,29 @@
 /***************************************************** */
 /* Récupération des infos des inputs + éléments du DOM */
 /***************************************************** */
-const day = document.getElementById("day").value;
-const month = document.getElementById("month").value;
-const year = document.getElementById("year").value;
-const birthday_date = `${day}/${month}/${year}`;
+const day = document.getElementById("day");
+const month = document.getElementById("month");
+const year = document.getElementById("year");
+const birthday_date = new Date(`${day}/${month}/${year}`);
 
 const year_result = document.getElementById("year_result");
 const month_result = document.getElementById("month_result");
 const day_result = document.getElementById("day_result");
 
 const button = document.getElementById("btn");
-const button_refresh = document.getElementById("btn_refresh");
 
 /************************************************* */
 /* Ajout de l'évènement au click + calcul de l'age */
 /************************************************* */
 button.addEventListener("click", (e) => {
-    e.preventDefault();
+    validateDayField();
+    validateMonthField();
+    validateYearField();
+
     if (validateDayField() && validateMonthField() && validateYearField()) {
         calculationAge();
     }
-});
-
-button_refresh.addEventListener("click", () => {
-    refresh();
+    e.preventDefault();
 });
 
 /************************************************/
@@ -36,9 +35,9 @@ button_refresh.addEventListener("click", () => {
  * @returns {number} The result of calculation is displayed thanks to DOM
  */
 const calculationAge = () => {
-    let years = Math.abs(new Date().getFullYear() - Number(year));
-    let months = Math.abs(new Date().getMonth() - Number(month));
-    let days = Math.abs(new Date().getDate() - Number(day));
+    let years = Math.abs(new Date().getFullYear() - Number(year.value));
+    let months = Math.abs(new Date().getMonth() + 1 - Number(month.value));
+    let days = Math.abs(new Date().getDate() - Number(day.value));
 
     year_result.innerText = years;
     month_result.innerText = months;
@@ -58,19 +57,26 @@ const isValidDay = (d) => {
  * @returns {boolean}
  */
 const validateDayField = () => {
-    if (day.trim() == "") {
+    if (day.value.trim() == "") {
         showingErrorMessage(
             document.getElementById("day"),
-            "The field is required"
+            "The field is required",
+            "hsl(0, 100%, 67%)"
         );
         return false;
-    } else if (isValidDay(day.trim()) == false) {
+    } else if (isValidDay(day.value.trim()) == false) {
         showingErrorMessage(
             document.getElementById("day"),
-            "Must be a valid day"
+            "Must be a valid day",
+            "hsl(0, 100%, 67%)"
         );
         return false;
     } else {
+        showingErrorMessage(
+            document.getElementById("day"),
+            " ",
+            "hsl(0, 1%, 44%)"
+        );
         return true;
     }
 };
@@ -88,19 +94,26 @@ const isValidMonth = (m) => {
  * @returns {boolean}
  */
 const validateMonthField = () => {
-    if (month.trim() == "") {
+    if (month.value.trim() == "") {
         showingErrorMessage(
             document.getElementById("month"),
-            "The field is required"
+            "The field is required",
+            "hsl(0, 100%, 67%)"
         );
         return false;
-    } else if (isValidMonth(month.trim()) == false) {
+    } else if (isValidMonth(month.value.trim()) == false) {
         showingErrorMessage(
             document.getElementById("month"),
-            "Must be a valid month"
+            "Must be a valid month",
+            "hsl(0, 100%, 67%)"
         );
         return false;
     } else {
+        showingErrorMessage(
+            document.getElementById("month"),
+            " ",
+            "hsl(0, 1%, 44%)"
+        );
         return true;
     }
 };
@@ -118,31 +131,32 @@ const isValidYear = (y) => {
  * @returns {boolean}
  */
 const validateYearField = () => {
-    if (year.trim() == "") {
+    if (year.value.trim() == "") {
         showingErrorMessage(
             document.getElementById("year"),
-            "The field is required"
+            "The field is required",
+            "hsl(0, 100%, 67%)"
         );
         return false;
     } else if (
-        (year.trim() < new Date().getFullYear || year.trim() > 1900) &&
-        isValidYear(year.trim())
+        (year.value.trim() < new Date().getFullYear ||
+            year.value.trim() > 1900) &&
+        isValidYear(year.value.trim())
     ) {
         showingErrorMessage(
             document.getElementById("year"),
-            "Must be a valid year"
+            "Must be a valid year",
+            "hsl(0, 100%, 67%)"
         );
         return false;
     } else {
+        showingErrorMessage(
+            document.getElementById("year"),
+            " ",
+            "hsl(0, 1%, 44%)"
+        );
         return true;
     }
-};
-
-/**
- * Refresh the result of calculation
- */
-const refresh = () => {
-    location.reload();
 };
 
 /**
@@ -150,8 +164,8 @@ const refresh = () => {
  * @param {Node} elem - The node where change is needed
  * @param {String} text - The text that appears below the field if there is any error
  */
-const showingErrorMessage = (elem, text) => {
-    elem.previousElementSibling.style.color = "hsl(0, 100%, 67%)";
+const showingErrorMessage = (elem, text, color) => {
+    elem.previousElementSibling.style.color = color;
     elem.nextElementSibling.innerText = text;
-    elem.style.border = "2px solid hsl(0, 100%, 67%)";
+    elem.style.border = `2px solid ${color}`;
 };
