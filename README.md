@@ -30,7 +30,7 @@ Your users should be able to:
         </p>
     -   [x] The date is in the future
     <p align="center">
-        <img src="assets/images/errorValidity.png" alt="readme - error validity" width="50%">
+        <img src="assets/images/yearInvalid.png" alt="readme - error validity" width="50%">
     </p>
     -   The date is invalid e.g. 31/04/1991 (there are 30 days in April)
 -   [x] View the optimal layout for the interface depending on their device's screen size
