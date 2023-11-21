@@ -16,14 +16,15 @@ const button = document.getElementById("btn");
 /* Ajout de l'évènement au click + calcul de l'age */
 /************************************************* */
 button.addEventListener("click", (e) => {
-    validateDayField();
-    validateMonthField();
-    validateYearField();
+    e.preventDefault();
 
-    if (validateDayField() && validateMonthField() && validateYearField()) {
+    const isDayFieldValid = validateDayField();
+    const isMonthFieldValid = validateMonthField();
+    const isYearFieldValid = validateYearField();
+
+    if (isDayFieldValid && isMonthFieldValid && isYearFieldValid) {
         calculationAge();
     }
-    e.preventDefault();
 });
 
 /************************************************/
