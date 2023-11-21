@@ -145,7 +145,7 @@ const validateYearField = () => {
     ) {
         showingErrorMessage(
             document.getElementById("year"),
-            "Must be a valid year",
+            "Mustn't be a future year",
             "hsl(0, 100%, 67%)"
         );
         return false;
@@ -163,6 +163,7 @@ const validateYearField = () => {
  * Allows to display an error message with style according the status of fields
  * @param {Node} elem - The node where change is needed
  * @param {String} text - The text that appears below the field if there is any error
+ * @param {String} color - The color of (no-)error message
  */
 const showingErrorMessage = (elem, text, color) => {
     elem.previousElementSibling.style.color = color;
