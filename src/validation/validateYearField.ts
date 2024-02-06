@@ -12,11 +12,7 @@ export const validateYearField = (year: HTMLInputElement) => {
         "hsl(0, 100%, 67%)",
       );
       return false;
-    } else if (
-      (Number(year.value.trim()) < new Date().getFullYear() ||
-        Number(year.value.trim()) > 1900) &&
-      isValidYear(Number(year.value.trim()))
-    ) {
+    } else if (isValidYear(Number(year.value.trim()))) {
       showingErrorMessage(
         yearElement,
         "Mustn't be a future year",
