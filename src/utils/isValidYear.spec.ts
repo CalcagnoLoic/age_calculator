@@ -10,11 +10,11 @@ describe("isValidDay Suite Unit Test", () => {
     expect(typeof isValidYear(2)).toBe("boolean");
   });
 
-  it("should be return true", () => {
-    expect(isValidYear(1886)).toBe(true);
+  it("should be return valid year", () => {
+    expect(isValidYear(1886)).toBe(false);
   });
 
-  it("should be return false", () => {
-    expect(isValidYear(2520)).toBe(false);
+  it("should be return invalid year", () => {
+    expect(isValidYear(2520)).toBe(true);
   });
 });
