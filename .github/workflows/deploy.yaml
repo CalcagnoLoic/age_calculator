@@ -1,0 +1,23 @@
+name: Deploy to GH pages
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - dev
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Install Node versions
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
