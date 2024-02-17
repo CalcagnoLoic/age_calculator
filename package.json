@@ -5,7 +5,7 @@
     "compile": "tsc",
     "dev:compile": "tsc --watch",
     "dev:design": "npx tailwindcss -i ./public/assets/style/style.css -o ./dist/style/output.css --watch",
-    "design": "npx tailwindcss -i ./public/assets/style/style.css -o ./dist/style/output.css",
+    "design": "npx tailwindcss -i ./public/assets/style/style.css -o ./dist/public/assets/style/output.css",
     "linter": "eslint --ignore-path .eslintignore --ext .ts ."
   },
   "devDependencies": {
